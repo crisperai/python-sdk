@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "crisper-api-client"
+name = "crisper"
 version = "0.3.0"
 description = "A client library for accessing Crisper API"
 authors = []
