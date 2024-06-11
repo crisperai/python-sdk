@@ -22,13 +22,13 @@ class Crisper:
         response = api_v1_assistant_list.sync_detailed(client=self.client)
         return response.parsed.results
 
-    def get_assistant(self, name: str):
+    def _get_assistant(self, name: str):
         response = api_v1_assistant_retrieve.sync_detailed(name, client=self.client)
         if response.status_code == 200:
             return Assistant.from_dict(json.loads(response.content))
         return None
 
-    def create_assistant(self, name: str):
+    def _create_assistant(self, name: str):
         assistant = Assistant(name=name, knowledge_sources=[])
         response = api_v1_assistant_create.sync_detailed(body=assistant, client=self.client)
         to_return = None
@@ -36,3 +36,13 @@ class Crisper:
             return Assistant.from_dict(json.loads(response.content))
         return to_return
 
+
+    @staticmethod
+    def create_assistant(name: str):
+        crisper = Crisper()
+        return crisper._create_assistant(name)
+
+    @staticmethod
+    def get_assistant(name: str):
+        crisper = Crisper()
+        return crisper._get_assistant(name)

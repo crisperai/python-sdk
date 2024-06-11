@@ -2,7 +2,7 @@
 
 ### Install SDK
 ```bash
-pip install crisper
+pip install crisper-ai
 ```
 
 
@@ -10,8 +10,7 @@ pip install crisper
 
 ```python
 from crisper_api_client import Crisper
-client = Crisper()
-assistant = client.create_assistant(name="customer-support-bot")
+assistant = Crisper.create_assistant(name="customer-support-bot")
 ```
 
 
